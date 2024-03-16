@@ -10,7 +10,7 @@ class User(models.Model):
     date_register = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Username - {self.name}, date: {self.date_register}"
+        return f"Username - {self.name}"
 
 
 class Product(models.Model):
@@ -30,3 +30,6 @@ class Order(models.Model):
     products = models.ManyToManyField(Product)
     date_ordered = models.DateTimeField(auto_now_add=True)
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return f"Order by {self.customer.name}, total: {self.total_price}. Date: {self.date_ordered}"
